@@ -1,5 +1,6 @@
 from LSA import LSA
-import nltk
+import textmining
+
 
 ##Mock list of documents
 titles =[
@@ -19,14 +20,21 @@ ignorechars = ''',:'!$-'''
 
 #intialize the object
 mylsa = LSA(stopwords, ignorechars)
+print "Object initalized running test"
 
-#the method test to make sure my object can parse and properly build a term document matrix
 def test_parse_and_build(mylsa):
+    print "Begin parsing all documents"
+    tdms = []
     for t in titles:
         mylsa.parse(t)
+    print "Parsing Successful, Building text document matrix"
     mylsa.build()
+    print "Build Successful, Comparing against Textmining TDM"
 
-    ##TODO test against term document from imported library
+    tdm = textmining.TermDocumentMatrix()
+    for t in titles:
+        tdm.add_doc(t)
+
 
 test_parse_and_build(mylsa)
 
