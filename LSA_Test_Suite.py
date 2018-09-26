@@ -4,7 +4,7 @@ import textmining
 
 ##Mock list of documents
 titles =[
-    "How to Make Money in Stocks: A Winning System in Good Times or Bad",
+    "How to Make Money Money in Stocks: A Winning System in Good Times or Bad",
     "One Up On Wall Street: How to Use What You Already Know to Make Money in the Market",
     "Flash Boys: A Wall Street Revolt",
     "Reminiscences of a Stock Operator",
@@ -27,13 +27,12 @@ def test_parse_and_build(mylsa):
     tdms = []
     for t in titles:
         mylsa.parse(t)
+    print mylsa.word_dict["operator"]
     print "Parsing Successful, Building text document matrix"
     mylsa.build()
-    print "Build Successful, Comparing against Textmining TDM"
+    mylsa.printMatrix()
 
-    tdm = textmining.TermDocumentMatrix()
-    for t in titles:
-        tdm.add_doc(t)
+
 
 
 test_parse_and_build(mylsa)
