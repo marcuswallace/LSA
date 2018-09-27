@@ -4,19 +4,19 @@ import textmining
 
 ##Mock list of documents
 titles =[
-    "How to Make Money Money in Stocks: A Winning System in Good Times or Bad",
-    "One Up On Wall Street: How to Use What You Already Know to Make Money in the Market",
-    "Flash Boys: A Wall Street Revolt",
-    "Reminiscences of a Stock Operator",
-    "How to Avoid Loss and Earn Consistently in the Stock Market: An Easy-To-Understand and Practical Guide for Every Investor",
-    "How I Made $2,000,000 In The Stock Market ",
-    "The Warren Buffett Way: Investment Strategies of the World's Greatest Investor",
-    "The Dhandho Investor: The Low-Risk Value Method to High Returns",
-    "How to Make Money in Stocks: Complete Investing System"
+    "The Neatest Little Guide to Stock Market Investing",
+    "Investing For Dummies, 4th Edition",
+    "The Little Book of Common Sense Investing: The Only Way to Guarantee Your Fair Share of Stock Market Returns",
+    "The Little Book of Value Investing",
+    "Value Investing: From Graham to Buffett and Beyond",
+    "Rich Dad's Guide to Investing: What the Rich Invest in, That the Poor and the Middle Class Do Not!",
+    "Investing in Real Estate, 5th Edition",
+    "Stock Investing For Dummies",
+    "Rich Dad's Advisors: The ABC's of Real Estate Investing: The Secrets of Finding Hidden Profits Most Investors Miss"
 ]
-#these values are ignored or skipped over in the parsing because they hold no value
-stopwords = ['and','to','for','in','little','of','the','to', 'a']
-ignorechars = ''',:'!$-'''
+stopwords = ['and','edition','for','in','little','of','the','to']
+ignorechars = ''',:'!'''
+
 
 #intialize the object
 mylsa = LSA(stopwords, ignorechars)
@@ -27,9 +27,9 @@ def test_parse_and_build(mylsa):
     tdms = []
     for t in titles:
         mylsa.parse(t)
-    print mylsa.word_dict["operator"]
     print "Parsing Successful, Building text document matrix"
     mylsa.build()
+    mylsa.transform()
     mylsa.printMatrix()
 
 

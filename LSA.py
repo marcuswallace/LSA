@@ -29,7 +29,7 @@ class LSA(object):
         self.A = zeros([len(self.keys), self.count])
         for i, k in enumerate(self.keys):
             for d in self.word_dict[k]:
-                self.A[i-1,d-1] += 1
+                self.A[i,d] += 1
 
     def transform(self):
         word_doc_count = sum(self.A, axis=0)
