@@ -20,7 +20,7 @@ class LSA(object):
             elif i in self.word_dict:
                 self.word_dict[i].append(self.count)
             else:
-                self.word_dict[i] =  [self.count]
+                self.word_dict[i] = [self.count]
                 self.count += 1
 
     def build(self):
@@ -29,7 +29,7 @@ class LSA(object):
         self.A = zeros([len(self.keys), self.count])
         for i, k in enumerate(self.keys):
             for d in self.word_dict[k]:
-                self.A[i, d] += 1
+                self.A[i,d] += 1
 
     def transform(self):
         word_doc_count = sum(self.A, axis=0)
@@ -37,7 +37,7 @@ class LSA(object):
         rows, cols = self.A.shape
         for i in range(rows):
             for j in range(cols):
-                if word_doc_count[j] != 0 and doc_word_count[i] !=0:
+                if word_doc_count[j] != 0 and doc_word_count[i] != 0:
                     self.A[i, j] = (self.A[i, j] / word_doc_count[j]) * log(float(cols) / doc_word_count[i])
 
     def printMatrix(self):
