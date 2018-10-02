@@ -47,6 +47,6 @@ class LSA(object):
         self.U, self.S, self.Vt = svd(self.A)
 
 def query (A, q , docs):
-    norm_q = q/numpy.linalg.normalize(q)
+    norm_q = q/scipy.linalg.normalize(q)
     for i in len(docs):
-        similarity = numpy.dot(norm_q, A[:i].T)
+        print docs[i]+" matches the query with a value of "+numpy.dot(norm_q, A[:i].T)

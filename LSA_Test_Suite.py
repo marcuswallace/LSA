@@ -1,3 +1,4 @@
+import LSA as lsa
 from LSA import LSA
 import textmining
 
@@ -14,26 +15,15 @@ titles =[
     "Stock Investing For Dummies",
     "Rich Dad's Advisors: The ABC's of Real Estate Investing: The Secrets of Finding Hidden Profits Most Investors Miss"
 ]
-stopwords = ['and','edition','for','in','little','of','the','to']
+stopwords = ["and","edition","for","in","little","of","the","to"]
 ignorechars = ''',:'!'''
 
 
 #intialize the object
 mylsa = LSA(stopwords, ignorechars)
-print "Object initalized running test"
-
-def test_parse_and_build(mylsa):
-    print "Begin parsing all documents"
-    tdms = []
-    for t in titles:
-        mylsa.parse(t)
-    print "Parsing Successful, Building text document matrix"
-    mylsa.build()
-    mylsa.transform()
-    mylsa.printMatrix()
-
-
-
-
-test_parse_and_build(mylsa)
-
+print "Begin parsing all documents"
+tdms = []
+for t in titles:
+    mylsa.parse(t)
+mylsa.build()
+mylsa.printMatrix()
