@@ -26,6 +26,17 @@ def test_parse_with_restrictions():
         print "Parsing of a simple string with restrictions successful"
     else:
         print "Parsing Failed!"
+def test_parse_and_build():
+    stop_words = ['to', 'this', 'the']
+    ignorechar = '?'
+    mylsa = LSA(stop_words, ignorechar)
+    test_string = "Try to parse this correctly?"
+    test_string_two = "Try to parse the next one?"
+    mylsa.parse(test_string)
+    mylsa.parse(test_string_two)
+    mylsa.build()
+    print mylsa.A
 
-test_parse()
-test_parse_with_restrictions()
+test_parse_and_build()
+#test_parse()
+#test_parse_with_restrictions()
