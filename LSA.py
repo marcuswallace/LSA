@@ -21,7 +21,7 @@ class LSA(object):
                 self.word_dict[i].append(self.count)
             else:
                 self.word_dict[i] = [self.count]
-                self.count += 1
+                self.count +=1
 
     def build(self):
         self.keys = [k for k in self.word_dict.keys() if len(self.word_dict[k]) > 1]
