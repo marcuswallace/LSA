@@ -21,16 +21,13 @@ class LSA(object):
                 self.word_dict[i].append(self.count)
             else:
                 self.word_dict[i] = [self.count]
-                self.count += 1
+                self.count +=1
 
     def build(self):
-        self.keys = [k for k in self.word_dict.keys() if len(self.word_dict[k]) > 1]
+        self.keys = [k for k in self.word_dict.keys() if len(self.word_dict[k]) > 1] #might have to change this
         self.keys.sort()
-        self.A = zeros([len(self.keys), self.count])
-        for i, k in enumerate(self.keys):
-            for d in self.word_dict[k]:
-                self.A[i,d] += 1
-
+        self.A = zeros([len(self.keys)])
+        print self.A
     def transform(self):
         word_doc_count = sum(self.A, axis=0)
         doc_word_count = sum(asarray(self.A > 0), axis=1)
@@ -47,6 +44,6 @@ class LSA(object):
         self.U, self.S, self.Vt = svd(self.A)
 
 def query (A, q , docs):
-    norm_q = q/numpy.linalg.normalize(q)
+    norm_q = q/scipy.linalg.normalize(q)
     for i in len(docs):
-        similarity = numpy.dot(norm_q, A[:i].T)
+        print docs[i]+" matches the query with a value of "+numpy.dot(norm_q, A[:i].T)
